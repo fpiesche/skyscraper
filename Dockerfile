@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim as build
 COPY . /skyscraper
 RUN apt update \
-    && apt install -y build-essential qtbase5-dev \
+    && apt install -y --no-install-recommends build-essential qtbase5-dev \
     && cd skyscraper && qmake && make
 
 FROM scratch as export
