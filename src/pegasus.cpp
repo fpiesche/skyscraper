@@ -347,6 +347,9 @@ void Pegasus::assembleList(QString &finalOutput, QList<GameEntry> &gameEntries)
     if(!entry.videoFormat.isEmpty() && config->videos) {
       finalOutput.append(toPegasusFormat("assets.video", (config->relativePaths?entry.videoFile.replace(config->inputFolder, "."):entry.videoFile)) + "\n");
     }
+    if(!entry.ages.isEmpty()) {
+      finalOutput.append(toPegasusFormat("x-age-rating", entry.ages) + "\n");
+    }
     if(!entry.pSValuePairs.isEmpty()) {
       for(const auto &pair: entry.pSValuePairs) {
 	finalOutput.append(toPegasusFormat(pair.first, pair.second) + "\n");
